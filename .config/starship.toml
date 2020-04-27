@@ -71,14 +71,14 @@ symbol = "🎁 "
 [username]
 show_always = true
 
-[custom.home_date]
-command = "date +'%H:%M %d/%m/%y'"  # shows output of command
+[custom.home_date_status]
+command = "date +'%H:%M %d/%m/%y'; git --git-dir=$HOME/.baredotfiles/ --work-tree=$HOME status --short;"
 when = """ test "$HOME" = "$PWD" """
 prefix = "\n"
-style = "white"
+style = ""
 
 [custom.git_status]
-command = "git status"  # shows output of command
+command = "git status"
 directories = [".git"]
 prefix = "\n"
 style = "white"
