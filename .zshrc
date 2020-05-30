@@ -72,7 +72,7 @@ bindkey '^ ' autosuggest-accept              # CTRL+SPC
 
 # NPM completions caching
 # https://github.com/sorin-ionescu/prezto/blob/master/modules/node/init.zsh#L31
-cache_file="$DIR/caches/.node-cache.zsh"
+cache_file=~/.cache/.node-cache.zsh
 if [[ "$commands[npm]" -nt "$cache_file" || ! -s "$cache_file" ]]
 then
   npm completion >! "$cache_file" 2> /dev/null
@@ -113,16 +113,19 @@ zplug "MichaelAquilina/zsh-you-should-use"
 export YSU_MESSAGE_FORMAT="${BOLD}${YELLOW}*** ${RED}%command${YELLOW} => ${GREEN}%alias${PURPLE} (%alias_type) ${YELLOW}***${NONE}"
 export YSU_HARDCORE=1
 
-#########################################
-#########################################
-#########################################
-
-# https://github.com/truchi/alwaysontop
-# zplug "truchi/alwaysontop", defer:2
+# Can't live without you
+alias ll="ls -al"
 
 # Home folder tracked in a bare git repo
 # https://www.atlassian.com/git/tutorials/dotfiles
 alias config='/usr/bin/git --git-dir=$HOME/.baredotfiles/ --work-tree=$HOME'
+
+#########################################
+#########################################
+#########################################
+
+# https://github.com/truchi/depmanager
+zplug "truchi/depmanager", as:command, use:"dist/depmanager.sh", rename-to:"depmanager"
 
 # NVM
 # https://github.com/nvm-sh/nvm

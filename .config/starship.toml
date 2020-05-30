@@ -77,8 +77,3 @@ when = """ test "$HOME" = "$PWD" """
 prefix = "\n"
 style = ""
 
-[custom.git_status]
-command = "git status"
-directories = [".git"]
-prefix = "\n"
-style = "white"

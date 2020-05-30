@@ -6,40 +6,80 @@
 # License: GPLv3
 #=============================================================================
 
-# All SpaceVim option below [option] section
 [options]
-    # set spacevim theme. by default colorscheme layer is not loaded,
-    # if you want to use more colorscheme, please load the colorscheme
-    # layer
-    colorscheme = "gruvbox"
-    colorscheme_bg = "dark"
-    # Disable guicolors in basic mode, many terminal do not support 24bit
-    # true colors
-    enable_guicolors = true
-    # guifont = "Droid Sans Fallback"
-    # Disable statusline separator, if you want to use other value, please
-    # install nerd fonts
-    statusline_separator = "arrow"
-    statusline_inactive_separator = "arrow"
-    buffer_index_type = 4
-    enable_tabline_filetype_icon = true
-    enable_statusline_mode = false
+  windows_leader = "ù"
+  relativenumber = false
 
-# Enable autocomplete layer
-[[layers]]
-name = 'autocomplete'
-auto_completion_return_key_behavior = "complete"
-auto_completion_tab_key_behavior = "smart"
+  filemanager = "defx"
+  enable_googlesuggest = 1 # Not working?
+
+  colorscheme = "SpaceVim"
+  enable_guicolors = true
+
+  buffer_index_type = 0
+  statusline_separator = "arrow"
+  statusline_inactive_separator = "bar"
+  enable_tabline_filetype_icon = true
+
+  bootstrap_after = "config#after"
+  bootstrap_before = "config#before"
 
 [[layers]]
-name = 'shell'
-default_position = 'top'
-default_height = 30
+  name = 'autocomplete'
+  auto_completion_return_key_behavior = "smart" # Expands snippets as well
+  auto_completion_tab_key_behavior = "complete" # Ctrl-n / Ctrl-p for navigation
 
 [[layers]]
-name = 'VersionControl'
+  name = 'shell'
+  default_position = 'bottom'
+  default_height = 30
 
 [[layers]]
-qsdflkjhdflj
-name = 'default'
+  name = 'VersionControl'
+
+[[layers]]
+  name = "git"
+  git-plugin = "fugitive"
+
+[[layers]]
+  name = "github"
+
+[[layers]]
+  name = 'default' # For clipboard copy/paste
+
+[[layers]]
+  name = 'colorscheme' # Enables non-default colorschemes
+
+[[layers]]
+  name = 'core'
+  filetree_show_hidden = true
+
+[[layers]]
+  name = "tools"
+
+[[layers]]
+  name = "denite"
+
+[[layers]]
+  name="incsearch"
+
+[[layers]]
+  name = "gtags"
+  gtagslabel = "ctags"
+
+# https://spacevim.org/layers/language-server-protocol/
+[[layers]]
+  name = "lsp"
+  filetypes = ["typescript", "rust", "sh"]
+
+[[layers]]
+  name = "lang#typescript"
+
+# https://spacevim.org/layers/lang/rust/
+[[layers]]
+  name = "lang#rust"
+
+# https://spacevim.org/layers/lang/sh/
+[[layers]]
+  name = "lang#sh"
 
