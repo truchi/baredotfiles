@@ -16,3 +16,5 @@ export LESS_TERMCAP_se=$'\e[0m'         # reset reverse video
 export LESS_TERMCAP_us=$'\e[1;32m'      # begin underline
 export LESS_TERMCAP_ue=$'\e[0m'         # reset underline
 
+# Ls colors
+. "$HOME/dotfiles/zsh/lscolors.sh"
