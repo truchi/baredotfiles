@@ -134,6 +134,7 @@ setopt   HIST_FCNTL_LOCK                # Locks with OS locking system
 
 # Aliases
 alias h='history'
+alias hh='history -30 | tac | sk'
 
 # History substring search plugin
 # (https://github.com/zsh-users/zsh-history-substring-search)
@@ -219,8 +220,17 @@ zstyle ':completion:*' special-dirs true
 zle -N my-empty-buffer-completions
 bindkey '^I' my-empty-buffer-completions # (TAB)
 
+# Auto ls after cd
+chpwd_functions+=(exa_function)
+
 # Alias
-alias ll="ls -Al --color=auto"
+alias sudo='sudo '
+alias svim="nvim" # ~/.vim -> /home/romain/.SpaceVim
+# alias lvim="lvim" # lunarvim has its own executable
+alias nvid="neovide --maximized --frame=none --multigrid"
+alias s="nvid --neovim-bin /usr/bin/nvim"
+alias l="nvid --neovim-bin ~/.local/bin/lvim"
+alias ll="exa --all --long --group --classify --icons --group-directories-first"
 alias ,='cd -1'                         # Previous directory
 alias ,,='cd -2'                        # Prev 2
 alias ,,,='cd -3'                       # Prev 3
@@ -238,6 +248,10 @@ alias ......=../../../../../../         # Up 6
 alias .......=../../../../../../../     # Up 7
 alias ........=../../../../../../../../ # Up 8
 
+# Exa
+# https://github.com/ogham/exa
+export EXA_STRICT="true"
+
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 # ##################################### #
 # > Aliases / Functions                 #
@@ -253,12 +267,38 @@ export YSU_HARDCORE=1
 # https://www.atlassian.com/git/tutorials/dotfiles
 alias config='/usr/bin/git --git-dir=$HOME/.baredotfiles/ --work-tree=$HOME'
 
+# Dust
+# https://github.com/bootandy/dust
+alias du="dust"
+
+# Procs
+# https://github.com/dalance/procs
+alias ps="procs --sortd cpu"
+alias top="ps --watch"
+
+# fd
+# https://github.com/sharkdp/fd
+alias find="fd"
+
+# bat
+# https://github.com/sharkdp/bat
+alias cat="bat"
+
 #########################################
 #########################################
 #########################################
 
 # https://github.com/truchi/depmanager
 zplug "truchi/depmanager", as:command, use:"dist/depmanager.sh", rename-to:"depmanager"
+
+# Ripgrep config file
+# https://github.com/BurntSushi/ripgrep
+export RIPGREP_CONFIG_PATH="$HOME/.config/ripgrep/.ripgreprc"
+
+# Skim
+# https://github.com/lotabout/skim
+export SKIM_DEFAULT_COMMAND="fd --type file --color=always"
+export SKIM_DEFAULT_OPTIONS="--ansi --no-mouse"
 
 # NVM
 # https://github.com/nvm-sh/nvm
@@ -279,3 +319,5 @@ fi
 
 # Then, source plugins and add commands to $PATH
 zplug load
+
+source /home/romain/.config/broot/launcher/bash/br

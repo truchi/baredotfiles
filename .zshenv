@@ -1,11 +1,14 @@
 # Path
-path+=("$HOME/dotfiles/bin")
+path+=("$HOME/dotfiles/bin" "$HOME/.config/composer/vendor/bin")
+path+=("$HOME/perso/rust/cargo-den/target/debug")
 export PATH
 
 # Apps
-export VISUAL=nvim
+export VISUAL=lvim
 export EDITOR=$VISUAL
 export PAGER='less'
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+export GIT_PAGER="delta"
 
 # Man pages colors
 export LESS_TERMCAP_mb=$'\e[1;31m'      # begin bold

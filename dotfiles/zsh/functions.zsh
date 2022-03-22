@@ -15,7 +15,7 @@ my-empty-buffer-completions() {
     # $<SPC><TAB> -> print file
     elif [[ $BUFFER =~ ^[[:space:]]*$ ]]
     then
-        BUFFER="cat "
+        BUFFER="bat "
         CURSOR=4
         zle list-choices
     # $,<TAB> -> previous directories
@@ -73,4 +73,10 @@ _up() {
 }
 
 compdef _up up
+
+# Auto ls for after cd
+function exa_function() {
+    emulate -L zsh
+    exa --all --long --group --classify --icons --group-directories-first
+}
 
