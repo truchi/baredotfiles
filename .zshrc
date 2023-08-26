@@ -263,9 +263,32 @@ zplug "MichaelAquilina/zsh-you-should-use"
 export YSU_MESSAGE_FORMAT="${BOLD}${YELLOW}*** ${RED}%command${YELLOW} => ${GREEN}%alias${PURPLE} (%alias_type) ${YELLOW}***${NONE}"
 export YSU_HARDCORE=1
 
+# Git
 # Home folder tracked in a bare git repo
 # https://www.atlassian.com/git/tutorials/dotfiles
 alias config='/usr/bin/git --git-dir=$HOME/.baredotfiles/ --work-tree=$HOME'
+alias gco="git checkout"
+alias gs="git status"
+alias gd="git diff"
+alias gdc="git diff --cached"
+alias ga="git add"
+alias gaa="git add . && git status"
+alias gc="git commit"
+alias gaac="git add . && git commit"
+alias gl="git log"
+alias gladog="git log --all --decorate --oneline --graph"
+
+# Cargo
+alias cr="cargo run"
+alias crr="cargo run --release"
+alias ccw="cargo check --workspace"
+alias ccwa="cargo check --workspace --all-targets"
+alias ctw="cargo test --workspace"
+alias ctwa="cargo test --workspace --all-targets"
+alias cdw="cargo doc --workspace --no-deps --document-private-items"
+
+# Docker
+alias dps="sudo docker ps --format \"table {{.ID}}\t{{.Image}}\t{{.Status}}\""
 
 # Dust
 # https://github.com/bootandy/dust

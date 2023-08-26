@@ -1,3 +1,8 @@
+-- add `rust_analyzer` to `skipped_servers` list
+lvim.lsp.installer.setup.automatic_installation = false
+vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "rust_analyzer" })
+
+--
 -- ---------------------------------------------------------- --
 -- ---------------------------------------------------------- --
 -- NEOVIDE                                                    --
@@ -26,10 +31,10 @@ vim.cmd("let g:neovide_fullscreen=v:true")
 vim.opt.cmdheight = 1
 vim.opt.scrolloff = 10
 vim.cmd("set guifont=\"Fira Code Nerd Font\"")
+vim.cmd("set colorcolumn=101")
 -- Trying to make rustfmt work in lvim...
-vim.cmd("set autoread")
-vim.cmd("au CursorHold * checktime")
-vim.cmd("set colorcolumn=81")
+-- vim.cmd("set autoread")
+-- vim.cmd("au CursorHold * checktime")
 
 -- ---------------------------------------------------------- --
 -- ---------------------------------------------------------- --
@@ -39,20 +44,24 @@ vim.cmd("set colorcolumn=81")
 
 -- General
 lvim.leader = "space"
-lvim.colorscheme = "tokyonight"
-lvim.builtin.dashboard.active = true
-lvim.builtin.notify.active = true
+lvim.colorscheme = "catppuccin-latte"
+lvim.builtin.alpha.mode = "dashboard"
 lvim.builtin.terminal.active = true
 lvim.builtin.nvimtree.setup.view.side = "left"
-lvim.builtin.nvimtree.show_icons.git = 1
 lvim.builtin.treesitter.highlight.enabled = true
 lvim.builtin.telescope.defaults.layout_config.width = 0.9
+lvim.builtin.telescope.defaults.prompt_prefix = "  "
+lvim.builtin.telescope.defaults.selection_caret = "  "
 lvim.builtin.cmp.mapping["<Tab>"] = require('cmp').mapping.confirm({ select = true })
+lvim.format_on_save = true
+lvim.builtin.indentlines.active = false
 
 -- Plugins
 lvim.plugins = {
   { "lunarvim/colorschemes" },
   { "folke/tokyonight.nvim" },
+  { "rafamadriz/neon" },
+  { "catppuccin/nvim" },
   { "dracula/vim" },
   {
     "phaazon/hop.nvim",
@@ -94,16 +103,16 @@ formatters.setup {
 }
 
 -- Bindings
-lvim.keys.normal_mode["<M-h>"]     = ":HopChar2<CR>"    -- Alt h         : hop!
+lvim.keys.normal_mode["<M-h>"]     = ":HopChar2<CR>"   -- Alt h         : hop!
 lvim.keys.normal_mode["<M-l>"]     = ":vsplit<CR>"     -- Alt l         : split vertical
 lvim.keys.normal_mode["<M-q>"]     = ":close<CR>"      -- Alt q         : close window
 lvim.keys.normal_mode["<M-w>"]     = ":bdelete<CR>"    -- Alt w         : close buffer
 lvim.keys.normal_mode["<M-s>"]     = ":w<CR>"          -- Alt s         : save
+lvim.keys.normal_mode["<S-l>"]     = ":bnext<CR>"      -- Ctrl Tab      : next tab
+lvim.keys.normal_mode["<S-h>"]     = ":bprevious<CR>"  -- Ctrl Shift Tab: previous tab
 -- lvim.keys.normal_mode["<M-S-j>"]   = "<C-d>"           -- Alt Shift j   : scroll half down -- See neoscroll config
 -- lvim.keys.normal_mode["<M-S-k>"]   = "<C-u>"           -- Alt Shift k   : scroll half up   -- See neoscroll config
 -- lvim.keys.normal_mode["<Tab>"]     = ":wincmd w<CR>"   -- Tab           : switch window    => Ctrl  h/l
--- lvim.keys.normal_mode["<C-Tab>"]   = ":bnext<CR>"      -- Ctrl Tab      : next tab         => Shift h/l
--- lvim.keys.normal_mode["<C-S-Tab>"] = ":bprevious<CR>"  -- Ctrl Shift Tab: previous tab     => Shift h/l
 
 local _, actions = pcall(require, "telescope.actions")
 lvim.builtin.telescope.defaults.mappings = {

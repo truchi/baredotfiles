@@ -9,6 +9,7 @@ export EDITOR=$VISUAL
 export PAGER='less'
 export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 export GIT_PAGER="delta"
+export BAT_THEME="OneHalfLight"
 
 # Man pages colors
 export LESS_TERMCAP_mb=$'\e[1;31m'      # begin bold
